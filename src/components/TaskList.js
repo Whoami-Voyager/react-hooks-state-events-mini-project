@@ -1,16 +1,9 @@
 import React, { useState } from "react";
 import Task from "./Task";
 
-function TaskList({ tasks }) {
+function TaskList({ tasks, deleteTask }) {
 
-  const [newTask, setTasks] = useState(tasks);
-
-  function deleteTask(text) {
-    const newTasks = tasks.filter(task => task.text !== text);
-    setTasks(newTasks);
-  }
-
-  const task = newTask.map((things, index) => {
+  const task = tasks.map((things, index) => {
     return <Task key={index} text={things.text} category={things.category} deleteTask={deleteTask} />;
   })
 

@@ -1,21 +1,18 @@
-import React, { useState, useTransition } from "react";
+import React from "react";
 
-function CategoryFilter({ category }) {
+function CategoryFilter({ categories, drain, setCategory }) {
 
-  // const [drain, setCategory] = useState("All");
-  // const handleCategoryClick = (filter) => {
-  //   setCategory(filter);
-  // };
-  // const filteredItems = category.filter((item) => {
-  //   if (drain === "All") {
-  //     return true;
-  //   }
-  //   return item === drain;
-  // });
+  function handleCategoryClick(filter) {
+    setCategory(filter)
+  }
 
-  const dropDown = category.map((filters, index) => {
-    return <button key={index} onClick={ {}}>{filters}</button>
-  })
+  const dropDown = categories.map((filter, index) => {
+    return (
+      <button key={index} className={drain === filter ? "selected" : ""} onClick={() => handleCategoryClick(filter)}>
+        {filter}
+      </button>
+    );
+  });
 
   return (
     <div className="categories">
